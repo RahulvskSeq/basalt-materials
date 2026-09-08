@@ -1,0 +1,48 @@
+import { IMG } from './images.js'
+
+export const projectCategories = ['All', 'Residential', 'Workplace', 'Hospitality', 'Retail']
+
+export const projects = [
+  { id: 'worli-tower', name: 'Worli Tower Residence', location: 'Worli, Mumbai', category: 'Residential',
+    year: '2025', area: '5,200 sq ft', studio: 'Kanan Shah Associates', image: IMG.penthouse,
+    gallery: [IMG.barDark, IMG.livingWarm, IMG.suiteDark],
+    materials: ['BX 01 Basalt Black', 'ST 710 Marine', 'HW 550 Runner'],
+    summary: 'Thirty-first floor, glazed on three sides. Every vertical surface is black matt so the city stays the brightest thing in the room.' },
+  { id: 'hitec-workplace', name: 'HITEC City Workplace', location: 'Madhapur, Hyderabad', category: 'Workplace',
+    year: '2024', area: '24,000 sq ft', studio: 'Praxis Studio', image: IMG.officeLoft,
+    gallery: [IMG.officeOpen, IMG.facadeBlue, IMG.drawings],
+    materials: ['BX 07 Fair-Face', 'ST FR Fire Retardant', 'HW 450 Channel'],
+    summary: 'Two floor plates on a 1.5 m planning grid. Fair-face concrete on the cores, fire-retardant substrate everywhere, and nothing decorative anywhere.' },
+  { id: 'assagao-house', name: 'Assagao House', location: 'Assagao, Goa', category: 'Residential',
+    year: '2025', area: '6,800 sq ft', studio: 'Atelier Kade', image: IMG.houseNight,
+    gallery: [IMG.livingWarm, IMG.stoneBath, IMG.bedroomSuite],
+    materials: ['BX 04 Corten', 'ST 710 Marine', 'HW 120 Pull'],
+    summary: 'Corten and blackened timber on an open-to-monsoon plan. Marine substrate throughout, because the plan has no dry season.' },
+  { id: 'lower-parel-bar', name: 'Lower Parel Bar', location: 'Lower Parel, Mumbai', category: 'Hospitality',
+    year: '2024', area: '3,100 sq ft', studio: 'Object Practice', image: IMG.barDark,
+    gallery: [IMG.vesselsDark, IMG.livingGreen, IMG.facadeDark],
+    materials: ['BX 30 Bronze Mesh', 'BX 18 Oxide Green', 'ST 303 Structural'],
+    summary: 'Bronze mesh on the back bar, oxide green everywhere else, and a single 11 m run of shelving with no visible fixing.' },
+  { id: 'koramangala-studio', name: 'Koramangala Studio', location: 'Koramangala, Bengaluru', category: 'Workplace',
+    year: '2025', area: '7,400 sq ft', studio: 'Praxis Studio', image: IMG.officeOpen,
+    gallery: [IMG.officeLoft, IMG.benchMinimal, IMG.livingWhite],
+    materials: ['BX 33 Chalk White', 'ST HDF', 'HW 060 Latch'],
+    summary: 'A studio for eighty people with one white, one grey and no signage. Wayfinding is done entirely with floor level and ceiling height.' },
+  { id: 'panjim-hotel', name: 'Panjim Boutique Hotel', location: 'Panjim, Goa', category: 'Hospitality',
+    year: '2023', area: '14,600 sq ft', studio: 'Atelier Kade', image: IMG.suiteDark,
+    gallery: [IMG.bedroomSuite, IMG.stoneBath, IMG.livingBalcony],
+    materials: ['BX 26 Graphite Linear', 'BX 22 Travertine', 'HW 900 Lift'],
+    summary: 'Twenty-eight keys in a restored customs house. Graphite fluting in the corridors, travertine in the rooms, and lift rails in every wardrobe.' },
+  { id: 'cp-flagship', name: 'Connaught Place Flagship', location: 'New Delhi', category: 'Retail',
+    year: '2024', area: '5,900 sq ft', studio: 'Object Practice', image: IMG.facadeBrick,
+    gallery: [IMG.arches, IMG.houseModern, IMG.benchMinimal],
+    materials: ['BX 22 Travertine', 'ST FLEX Bending Ply', 'HW 320 Box'],
+    summary: 'Every display plinth is a radiused form on 8 mm bending ply, wrapped in one travertine so the product carries all the colour.' },
+  { id: 'whitefield-villas', name: 'Whitefield Villas', location: 'Whitefield, Bengaluru', category: 'Residential',
+    year: '2025', area: '19,200 sq ft', studio: 'Kanan Shah Associates', image: IMG.houseModern,
+    gallery: [IMG.poolGlass, IMG.villaWhite, IMG.kitchenGraphite],
+    materials: ['BX 11 Smoked Ash', 'ST 303 Structural', 'HW 110 Hinge'],
+    summary: 'Six villas from one detail set. Ash on every shutter, one hinge specification across 1,400 doors, and a snagging list that fitted on a page.' },
+]
+
+export const projectById = Object.fromEntries(projects.map((p) => [p.id, p]))

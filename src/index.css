@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { --hard: cubic-bezier(0.65, 0, 0.35, 1); }
+
+  * { -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  html,
+  body {
+    max-width: 100%;
+    /* `clip`, not `hidden` on both: `hidden` here makes the body its own
+       scroll container and Chrome then refuses to scroll on wheel input. */
+    overflow-x: clip;
+  }
+  @supports not (overflow: clip) {
+    html { overflow-x: visible; }
+    body { overflow-x: hidden; }
+  }
+
+  body {
+    @apply bg-void font-sans text-chalk antialiased;
+    font-weight: 300;
+  }
+
+  ::selection { background: #e2552a; color: #08080a; }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #101013; }
+  ::-webkit-scrollbar-thumb { background: #26262b; }
+  ::-webkit-scrollbar-thumb:hover { background: #5a5a62; }
+
+  img { max-width: 100%; }
+}
+
+@layer components {
+  /* ---------- Type: condensed caps for display, mono for data ---------- */
+  .b-display {
+    @apply font-display font-semibold uppercase leading-[0.88] tracking-tightest;
+    font-size: clamp(2.7rem, 9vw, 9rem);
+  }
+  .b-h1 {
+    @apply font-display font-semibold uppercase leading-[0.92] tracking-tightest;
+    font-size: clamp(2.1rem, 5.2vw, 4.8rem);
+  }
+  .b-h2 {
+    @apply font-display font-medium uppercase leading-[0.98] tracking-[-0.03em];
+    font-size: clamp(1.6rem, 3.2vw, 2.8rem);
+  }
+  .b-h3 {
+    @apply font-display font-medium uppercase leading-[1.05] tracking-[-0.02em];
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  }
+  .b-meta {
+    @apply font-mono text-[10px] font-light uppercase tracking-wide2 text-concrete md:text-[11px];
+  }
+  .b-body {
+    @apply font-sans text-[15px] font-light leading-[1.75] text-concrete md:text-base;
+  }
+
+  /* ---------- Layout: content sits right of the desktop rail ---------- */
+  .b-shell { @apply mx-auto w-full max-w-edge px-5 sm:px-8 lg:px-12; }
+  .b-page { @apply xl:pl-rail; }
+
+  .b-hair { @apply h-px w-full bg-line; }
+  .b-vhair { @apply w-px self-stretch bg-line; }
+
+  /* ---------- Surfaces ---------- */
+  .b-frame { @apply relative overflow-hidden bg-panel; }
+  .b-frame img { @apply h-full w-full object-cover; transition: transform 1.1s var(--hard), opacity 0.7s var(--hard); }
+
+  .b-card { @apply border border-line bg-panel transition-colors duration-500 ease-hard; }
+  .b-card:hover { @apply border-steel; }
+
+  /* Signal underline that wipes in from the left */
+  .b-wipe { @apply relative inline-block; }
+  .b-wipe::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-signal;
+    transition: transform 0.45s var(--hard);
+  }
+  .b-wipe:hover::after { @apply origin-left scale-x-100; }
+
+  .no-bar::-webkit-scrollbar { display: none; }
+  .no-bar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@layer utilities {
+  .snap-row { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .snap-cell { scroll-snap-align: start; }
+  .grid-lines {
+    background-image: linear-gradient(to right, #26262b 1px, transparent 1px);
+    background-size: 25% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
